@@ -1,0 +1,155 @@
+<title>סיכום פרויקט ציוני תלמידים</title>
+<meta charset="utf-8">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700&family=Heebo:wght@400;600;700&display=swap">
+<style>
+/* Layout: one reading column (~70ch), report structure with numbered sections because the process is a real sequence */
+:root {
+  --bg: #F6F7F4; --surface: #FDFDFB; --fg: #13233F; --body: #3E4A5C; --muted: #5A6472;
+  --line: #D9E0E8; --accent: #2A78D6; --accent-soft: #EAF1FB; --orange: #EB6834;
+  --display: 'Rubik', Arial, sans-serif; --text: 'Heebo', Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0F1A2E; --surface: #16243C; --fg: #EEF2F7; --body: #C8D3E0; --muted: #9AA8BA;
+  --line: #2A3B56; --accent: #6AA6EE; --accent-soft: #1B3150; --orange: #F08457; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0F1A2E; --surface: #16243C; --fg: #EEF2F7; --body: #C8D3E0; --muted: #9AA8BA;
+  --line: #2A3B56; --accent: #6AA6EE; --accent-soft: #1B3150; --orange: #F08457; color-scheme: dark }
+body { background: var(--bg); color: var(--body); font-family: var(--text); font-size: 17px; line-height: 1.7; }
+.doc { max-width: 760px; margin: 0 auto; padding-block: 48px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); color: var(--fg); text-wrap: balance; line-height: 1.25; margin: 0; }
+h1 { font-size: 36px; font-weight: 700; }
+h2 { font-size: 24px; font-weight: 700; margin-top: 48px; padding-bottom: 8px; border-bottom: 1px solid var(--line); display: flex; gap: 10px; align-items: baseline; }
+h2 .no { color: var(--accent); font-size: 18px; }
+h3 { font-size: 18px; font-weight: 700; margin-top: 24px; }
+p { margin: 12px 0 0; }
+ul, ol { margin: 10px 0 0; padding-inline-start: 22px; }
+li { margin-top: 6px; }
+.meta { color: var(--muted); font-size: 15px; margin-top: 10px; }
+.callout { background: var(--accent-soft); border-radius: 12px; padding: 16px 20px; margin-top: 24px; color: var(--fg); font-size: 18px; }
+.q { font-family: var(--display); font-weight: 500; color: var(--fg); font-size: 19px; line-height: 1.5; }
+.scroll { overflow-x: auto; margin-top: 16px; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; font-variant-numeric: tabular-nums; }
+th, td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: right; }
+th { color: var(--fg); font-weight: 600; }
+td.num, th.num { text-align: center; }
+.heat td.c { text-align: center; font-weight: 700; border: 2px solid var(--bg); border-radius: 0; }
+.heat .w { color: #FBFBF8; } .heat .d { color: #13233F; }
+.heat .v { display: block; direction: ltr; unicode-bidi: isolate; }
+.heat .n { display: block; font-weight: 400; font-size: 12px; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; text-align: center; }
+.stat b { display: block; font-family: var(--display); font-size: 32px; color: var(--fg); direction: ltr; unicode-bidi: isolate; }
+.stat.hi { border: 2px solid var(--accent); } .stat.hi b { color: var(--accent); }
+.stat span { font-size: 14px; color: var(--muted); }
+figure { margin: 16px 0 0; } figure img { width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid var(--line); background: #fff; }
+figcaption { font-size: 14px; color: var(--muted); margin-top: 6px; }
+code { font-size: 14px; direction: ltr; unicode-bidi: isolate; }
+@media (max-width: 560px) { h1 { font-size: 28px; } .stats { grid-template-columns: 1fr; } }
+</style>
+
+<div class="doc" dir="rtl">
+<h1>האם קורס הכנה קשור לציונים גבוהים יותר?</h1>
+<p class="meta">מסמך סיכום · פרויקט מסכם בניתוח נתונים בעזרת AI · נובמבר 2026</p>
+
+<div class="callout"><b>בקצרה:</b> הממוצע של תלמידים שהשלימו קורס הכנה גבוה יותר בכל קבוצות המלגה ובכל רמות השכלת ההורים. הפער הגדול ביותר הוא בכתיבה (כ־10 נקודות). זה קשר, לא בהכרח סיבה ותוצאה.</div>
+
+<h2><span class="no">1</span>מבוא ומטרה</h2>
+<p>הנתונים הם תוצאות מבחנים של תלמידים מאחד מבתי הספר הגדולים בישראל. לכל תלמיד יש ציון במתמטיקה, בקריאה ובכתיבה (0–100), וחמישה פרטי רקע: מלגה (בגלל הכנסה נמוכה של ההורים), השכלת ההורים, השלמת קורס הכנה למבחן (לא חובה), מגדר ומוצא.</p>
+<p><b>המטרה:</b> לבדוק אילו גורמים קשורים לציונים, כדי לזהות תלמידים שעשויים להזדקק לעזרה.</p>
+
+<h2><span class="no">2</span>שיטה וכלים</h2>
+<p>העבודה נעשתה בשישה שלבים, בעזרת שני סוכני AI עם תפקידים מוגדרים: <b>נועה</b>, סוכנת ניקוי, ו<b>יואב</b>, סוכן חקר. בכל שלב כתבתי פרומפט, קיבלתי משוב, שיפרתי אותו ובדקתי את התוצאה לפני ואחרי. החישובים והגרפים נעשו ב־Python (pandas ו־matplotlib), והכלים הסטטיסטיים הם אלה שנלמדו בקורס: ממוצע, חציון ו־IQR.</p>
+<ol>
+<li>ניקוי הנתונים</li>
+<li>חקר והסקת מסקנות ראשוניות</li>
+<li>ניסוח שאלת מחקר</li>
+<li>גרפים וסטטיסטיקה תיאורית</li>
+<li>דשבורד</li>
+<li>תשובה ורפלקציה</li>
+</ol>
+
+<h2><span class="no">3</span>ניקוי הנתונים</h2>
+<div class="scroll"><table>
+<tr><th>בדיקה</th><th class="num">לפני</th><th>פעולה</th><th class="num">אחרי</th></tr>
+<tr><td>מספר שורות</td><td class="num">1,068</td><td>–</td><td class="num">1,057</td></tr>
+<tr><td>שורות עם מידע חסר</td><td class="num">11</td><td>נמחקו</td><td class="num">0</td></tr>
+<tr><td>שורות כפולות</td><td class="num">68</td><td>נשארו בכוונה</td><td class="num">68</td></tr>
+<tr><td>ציונים מחוץ ל־0–100</td><td class="num">0</td><td>לא נדרש תיקון</td><td class="num">0</td></tr>
+<tr><td>כתיב לא אחיד</td><td class="num">0</td><td>לא נדרש תיקון</td><td class="num">0</td></tr>
+</table></div>
+<p><b>למה הכפילויות נשארו:</b> בקובץ אין מזהה תלמיד, ולכן ייתכן ששתי שורות זהות הן שני תלמידים שונים עם אותם ציונים. בדיקה הראתה שהן משנות את הממוצעים בפחות מ־0.1 נקודה.</p>
+
+<h2><span class="no">4</span>חקר הנתונים</h2>
+<p>החקר בדק כל אחד מחמשת הגורמים בנפרד, בכל אחד משלושת המקצועות. עלו שתי מסקנות:</p>
+<ol>
+<li><b>מלגה:</b> לתלמידים עם מלגה יש ממוצע נמוך יותר בכל המקצועות, עד 11 נקודות במתמטיקה. 77% מהתלמידים שקיבלו מתחת ל־40 הם תלמידים עם מלגה, לעומת 36% מכלל התלמידים.</li>
+<li><b>כל מקצוע מתנהג אחרת:</b> בנים גבוהים יותר במתמטיקה, ובנות בקריאה ובכתיבה. השכלת ההורים וקורס ההכנה קשורים לפער גדול יותר בכתיבה.</li>
+</ol>
+<p>נמצאו 23 ציונים חריגים לפי IQR, כולם נמוכים. הם לא נמחקו, כי הם בטווח התקין וייתכן שהם אמיתיים.</p>
+
+<h2><span class="no">5</span>שאלת המחקר</h2>
+<p class="q">האם השלמת קורס הכנה קשורה לציונים גבוהים יותר גם כשמתחשבים במלגה ובהשכלת ההורים, ובאיזה מקצוע (מתמטיקה, קריאה או כתיבה) הקשר הזה חזק יותר?</p>
+<p><b>למה קורס ההכנה:</b> מבין חמשת הגורמים, זה היחיד שבית הספר יכול לשנות. בדיקה מקדימה הראתה שהוא לא קשור למלגה: כ־36% עשו אותו בשתי הקבוצות. לכן אפשר לבדוק אותו בנפרד ממנה.</p>
+
+<h2><span class="no">6</span>ממצאים</h2>
+<p>המדד המרכזי הוא <b>הפער</b>: הממוצע של מי שהשלים קורס פחות הממוצע של מי שלא השלים, בנקודות.</p>
+<div class="stats">
+<div class="stat"><b>+5.4</b><span>מתמטיקה</span></div>
+<div class="stat"><b>+7.3</b><span>קריאה</span></div>
+<div class="stat hi"><b>+9.9</b><span>כתיבה: הפער הגדול ביותר</span></div>
+</div>
+<p class="meta">380 תלמידים השלימו קורס, 677 לא. הפער בחציון דומה: 5, 8 ו־11 נקודות.</p>
+
+<h3>לפי מלגה</h3>
+<figure><img src="figures/04_bars_course_by_tuition.png" alt="גרף עמודות: ממוצע הציונים של מי שהשלים קורס הכנה ומי שלא, לפי מלגה, בשלושת המקצועות. בכל שש ההשוואות הממוצע של מי שהשלים קורס גבוה יותר.">
+<figcaption>גם בקרב תלמידים עם מלגה וגם בקרב תלמידים בלי מלגה, הממוצע של מי שהשלים קורס גבוה יותר. עם מלגה הפער הוא 5.9, 7.6 ו־10.9 נקודות; בלי מלגה 5.2, 7.2 ו־9.3.</figcaption></figure>
+
+<h3>לפי השכלת ההורים</h3>
+<div class="scroll"><table class="heat">
+<tr><th>השכלת ההורים</th><th class="num">מתמטיקה</th><th class="num">קריאה</th><th class="num">כתיבה</th></tr>
+<tr><td>תיכון חלקי</td><td class="c d" style="background:#77a9e7"><span class="v">+5.1</span><span class="n">79 השלימו · 107 לא</span></td><td class="c d" style="background:#4287db"><span class="v">+7.0</span><span class="n">79 השלימו · 107 לא</span></td><td class="c w" style="background:#2162b2"><span class="v">+9.3</span><span class="n">79 השלימו · 107 לא</span></td></tr>
+<tr><td>תיכון מלא</td><td class="c d" style="background:#9cc0ef"><span class="v">+3.9</span><span class="n">59 השלימו · 146 לא</span></td><td class="c d" style="background:#88b3eb"><span class="v">+4.6</span><span class="n">59 השלימו · 146 לא</span></td><td class="c w" style="background:#2874cf"><span class="v">+8.1</span><span class="n">59 השלימו · 146 לא</span></td></tr>
+<tr><td>לימודים על־תיכוניים חלקיים</td><td class="c d" style="background:#4f90de"><span class="v">+6.5</span><span class="n">84 השלימו · 157 לא</span></td><td class="c w" style="background:#1f5ca8"><span class="v">+9.7</span><span class="n">84 השלימו · 157 לא</span></td><td class="c w" style="background:#14407a"><span class="v">+11.7</span><span class="n">84 השלימו · 157 לא</span></td></tr>
+<tr><td>תואר מכללה</td><td class="c d" style="background:#5b97e1"><span class="v">+6.1</span><span class="n">89 השלימו · 153 לא</span></td><td class="c w" style="background:#266fc7"><span class="v">+8.4</span><span class="n">89 השלימו · 153 לא</span></td><td class="c w" style="background:#174785"><span class="v">+11.2</span><span class="n">89 השלימו · 153 לא</span></td></tr>
+<tr><td>תואר ראשון</td><td class="c d" style="background:#659de3"><span class="v">+5.8</span><span class="n">49 השלימו · 74 לא</span></td><td class="c d" style="background:#6da2e5"><span class="v">+5.5</span><span class="n">49 השלימו · 74 לא</span></td><td class="c w" style="background:#2a77d4"><span class="v">+7.9</span><span class="n">49 השלימו · 74 לא</span></td></tr>
+<tr><td>תואר שני</td><td class="c d" style="background:#d4e4f8"><span class="v">+1.0</span><span class="n">20 השלימו · 40 לא</span></td><td class="c d" style="background:#97bdee"><span class="v">+4.0</span><span class="n">20 השלימו · 40 לא</span></td><td class="c d" style="background:#5492df"><span class="v">+6.3</span><span class="n">20 השלימו · 40 לא</span></td></tr>
+</table></div>
+<p class="meta">בכל תא: הפער בנקודות, ומתחתיו מספר התלמידים שהשלימו קורס ושלא השלימו. צבע כהה יותר = פער גדול יותר.</p>
+<p>הפער חיובי בכל 18 השילובים, ובכל רמת השכלה הוא הגדול ביותר בכתיבה.</p>
+
+<h2><span class="no">7</span>תשובה ומסקנות</h2>
+<p><b>כן, השלמת קורס הכנה קשורה לציונים גבוהים יותר.</b> הפער מופיע גם אצל תלמידים עם מלגה וגם אצל תלמידים בלי מלגה, ובכל רמות השכלת ההורים, ולכן המלגה והשכלת ההורים לא מסבירות אותו. הקשר חזק יותר בכתיבה, ובעיקר אצל תלמידים שהשכלת הוריהם היא לימודים על־תיכוניים חלקיים או תואר מכללה (כ־11 נקודות).</p>
+<p>אני בטוח יחסית בתשובה גם בלי מבחן מובהקות, כי הפער עקבי (חיובי בכל 18 השילובים) והקבוצות גדולות (380 מול 677).</p>
+
+<h3>מגבלות</h3>
+<ul>
+<li>הממצא מראה קשר, לא סיבה ותוצאה: ייתכן שתלמידים שבוחרים לעשות את הקורס שונים מהאחרים בדרכים שלא נמדדו, למשל במוטיבציה.</li>
+<li>לא נעשה מבחן מובהקות. בקבוצות קטנות, כמו תלמידים שהשכלת הוריהם היא תואר שני (20 השלימו ו־40 לא), הפער פחות יציב.</li>
+<li>בדקנו את המלגה ואת השכלת ההורים כל אחת בנפרד, ולא את שתיהן יחד.</li>
+</ul>
+
+<h2><span class="no">8</span>רפלקציה והמלצה</h2>
+<p><b>האם אני מרוצה מהתשובה? חלקית.</b> הנתונים עונים על השאלה אם יש קשר, אבל לא על השאלה אם הקורס גורם לשיפור. חסר גם מידע על ההורים: אם הם היו יודעים על הממצאים, האם הם היו תומכים בכך שילדיהם יעשו את הקורס?</p>
+<p><b>ההמלצה לבית הספר:</b> לעודד את כל התלמידים לעשות את קורס ההכנה, ולא רק את החלשים. כדאי להתחיל בתלמידים עם מלגה ולשים דגש על כתיבה, כי שם הפער הגדול ביותר. אחר כך לבדוק שוב את הציונים, כדי לראות אם הקורס באמת גורם לשיפור.</p>
+
+<h2><span class="no">9</span>לקחים מהעבודה עם AI</h2>
+<p>גם AI טועה, ולכן בדקתי כל תוצאה לפני ואחרי. ארבע טעויות נתפסו ותוקנו בדרך:</p>
+<ul>
+<li><b>אחידות שלא הייתה צריכה תיקון:</b> הניקוי הפך את <code>group C</code> ל־<code>group c</code>, למרות שהערכים כבר היו אחידים.</li>
+<li><b>ציר שמתחיל מ־40:</b> העמודות הגדילו את הפערים בעין. תוקן לציר שמתחיל מ־0.</li>
+<li><b>עברית הפוכה בגרפים:</b> כיוון הכתיבה הופך פעמיים, והטקסט יצא הפוך.</li>
+<li><b>טבלה קטנה מדי:</b> מפת החום בדשבורד הייתה תמונה קטנה, והפכה לטבלה קריאה.</li>
+</ul>
+
+<h2><span class="no">10</span>קבצים</h2>
+<div class="scroll"><table>
+<tr><th>קובץ</th><th>תוכן</th></tr>
+<tr><td><code>Student_tests_results.xlsx</code></td><td>הנתונים המקוריים (לא שונו)</td></tr>
+<tr><td><code>outputs/Student_tests_results_clean.csv</code></td><td>הנתונים אחרי ניקוי</td></tr>
+<tr><td><code>outputs/dashboard.html</code></td><td>הדשבורד</td></tr>
+<tr><td><code>docs/process_log.md</code></td><td>תיעוד מלא של כל שלב, כולל הפרומפטים והמשוב</td></tr>
+<tr><td><code>scripts/</code></td><td>הקוד של הניקוי, החקר, הגרפים והדשבורד</td></tr>
+</table></div>
+</div>
